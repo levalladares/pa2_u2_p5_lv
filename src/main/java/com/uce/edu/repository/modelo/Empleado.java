@@ -30,7 +30,7 @@ public class Empleado {
 	@Column(name = "empl_fecha_ingreso")
 	private LocalDate fechaIngreso;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "empl_id_ciudadano")
 	private Ciudadano ciudadano;
 	
@@ -59,6 +59,11 @@ public class Empleado {
 	}
 	public void setCiudadano(Ciudadano ciudadano) {
 		this.ciudadano = ciudadano;
+	}
+	@Override
+	public String toString() {
+		return "Empleado [id=" + id + ", salario=" + salario + ", fechaIngreso=" + fechaIngreso + ", ciudadano="
+				+ ciudadano + "]";
 	}
 	
 	
