@@ -29,7 +29,7 @@ public class Libro {
 	@Column(name = "libr_fecha_publicacion")
 	private LocalDate fechaPublicaciom;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	@JoinTable(name = "autor_libro",
 	joinColumns = @JoinColumn(name="auli_id_libro"), //tabla secundaria
 	inverseJoinColumns = @JoinColumn(name="auli_id_autor")) // tabla principal

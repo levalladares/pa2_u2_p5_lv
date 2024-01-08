@@ -26,7 +26,7 @@ public class Autor {
 	@Column(name = "auto_nacional")
 	private String nacional;
 	
-	@ManyToMany(mappedBy = "autores", cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy = "autores")
 	private Set<Libro> libros;
 	
 	
