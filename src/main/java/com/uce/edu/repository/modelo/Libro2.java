@@ -3,16 +3,18 @@ package com.uce.edu.repository.modelo;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
-//@Entity
-//@Table(name = "libro2")
+@Entity
+@Table(name = "libro2")
 public class Libro2 {
 
 	@Id
@@ -24,10 +26,8 @@ public class Libro2 {
 	private String titulo;
 	@Column(name = "libr_fecha_publicacion")
 	private LocalDate fechaPublicaciom;
-	
-	private List<AutorLibro> autorLibro;
-	
-	
+	@OneToMany(mappedBy = "libro2", cascade = CascadeType.ALL)
+	private List<AutorLibro> autoresLibros;
 
 	// set y get
 	public Integer getId() {
@@ -54,5 +54,12 @@ public class Libro2 {
 		this.fechaPublicaciom = fechaPublicaciom;
 	}
 
+	public List<AutorLibro> getAutoresLibros() {
+		return autoresLibros;
+	}
 
+	public void setAutoresLibros(List<AutorLibro> autoresLibros) {
+		this.autoresLibros = autoresLibros;
+	}
+	
 }

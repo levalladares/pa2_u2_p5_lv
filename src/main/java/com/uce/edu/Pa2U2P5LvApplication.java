@@ -1,7 +1,9 @@
 package com.uce.edu;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,18 +12,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.uce.edu.repository.modelo.Autor;
+import com.uce.edu.repository.modelo.Autor2;
+import com.uce.edu.repository.modelo.AutorLibro;
 import com.uce.edu.repository.modelo.Libro;
-import com.uce.edu.service.IAutorService;
+import com.uce.edu.repository.modelo.Libro2;
 import com.uce.edu.service.ILibroService;
-import com.uce.edu.service.LibroServiceImpl;
 
 @SpringBootApplication
 public class Pa2U2P5LvApplication implements CommandLineRunner {
 
 	@Autowired
 	private ILibroService iLibroService;
-	@Autowired
-	private IAutorService autorService;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P5LvApplication.class, args);
@@ -32,66 +34,42 @@ public class Pa2U2P5LvApplication implements CommandLineRunner {
 		// TODO Auto-generated method stub
 		
 		// libro con autores 
-		Libro l1 = new Libro();
-		l1.setTitulo("las Catilinarias");
+		Libro2 l1 = new Libro2();
+		l1.setTitulo("JAVA2");
 		l1.setFechaPublicaciom(LocalDate.now());
 		
+		Autor2 a1= new Autor2();
+		a1.setNombre("Jose Rios2");	
+		a1.setNacional("peruano2");
 		
-		Autor a1= new Autor();
-		a1.setNombre("Jose Rios");	
-		a1.setNacional("peruano");
-		this.autorService.guardar(a1);
+		Autor2 a2= new Autor2();
+		a2.setNombre("Juan Montalvo2");	
+		a2.setNacional("ecuatoriano2");
 		
-		Autor a2= new Autor();
-		a2.setNombre("Juan Montalvo");	
-		a2.setNacional("ecuatoriano");
-		this.autorService.guardar(a2);
-		
-		Set<Autor> autores = new HashSet<Autor>();
+		List<Autor2> autores = new ArrayList<Autor2>();
 		autores.add(a2);
 		autores.add(a1);
 		
-		l1.setAutores(autores);
+		AutorLibro autorLibro1 = new AutorLibro();
+		autorLibro1.setLibro2(l1);
+		autorLibro1.setAutor2(a1);
 		
-		Set<Libro> libros = new HashSet<Libro>();
-		libros.add(l1);
+		AutorLibro autorLibro2 = new AutorLibro();
+		autorLibro2.setLibro2(l1);
+		autorLibro2.setAutor2(a2);
 		
-		a1.setLibros(libros);
-		a2.setLibros(libros);
+		List<AutorLibro> lista = new ArrayList<AutorLibro>();
+		lista.add(autorLibro2);
+		lista.add(autorLibro1);
 		
-		this.iLibroService.guardar(l1);
-		
-		
-		
-		Set<Autor> autor = new HashSet<Autor>();
-		Set<Libro> libros2 = new HashSet<Libro>();
-		//autor con  libros
-		Autor a3 = new Autor();
-		a3.setNacional("chileno");
-		a3.setNombre("Isabel Allende");
-		a3.setLibros(libros2);
-		
-		Libro l2 = new Libro();
-		l2.setTitulo("Violeta");
-		l2.setFechaPublicaciom(LocalDate.now());
-		l2.setAutores(autor);
-		this.iLibroService.guardar(l2);
-		
-		Libro l3 = new Libro();
-		l3.setTitulo("Violeta");
-		l2.setAutores(autor);
-		l3.setFechaPublicaciom(LocalDate.now());
-		this.iLibroService.guardar(l3);
-		libros2.add(l2);
-		libros2.add(l3);
+		l1.setAutoresLibros(lista);
 		
 		
+	//	this.iLibroService.guardar(l1);
+		Libro libro=this.iLibroService.buscarPorNombre("JAVA");
+		System.out.println(libro);
 		
 		
-		
-		
-		autor.add(a3);
-		this.autorService.guardar(a3);
 		
 		
 		

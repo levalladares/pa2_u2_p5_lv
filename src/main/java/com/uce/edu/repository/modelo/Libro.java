@@ -18,7 +18,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "libro")
 public class Libro {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_libro")
 	@SequenceGenerator(name = "seq_libro", sequenceName = "seq_libro", allocationSize = 1)
@@ -66,6 +66,11 @@ public class Libro {
 
 	public void setAutores(Set<Autor> autores) {
 		this.autores = autores;
+	}
+	
+	@Override
+	public String toString() {
+		return "Libro [id=" + id + ", titulo=" + titulo + ", fechaPublicaciom=" + fechaPublicaciom + "]";
 	}
 
 }
