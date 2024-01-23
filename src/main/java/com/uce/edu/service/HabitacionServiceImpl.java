@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.uce.edu.repository.IHabitacionRepository;
 import com.uce.edu.repository.modelo.Habitacion;
+import com.uce.edu.repository.modelo.Hotel;
 
 @Service
 public class HabitacionServiceImpl implements IHabitacionService {
@@ -34,6 +35,12 @@ public class HabitacionServiceImpl implements IHabitacionService {
 	public void eliminar(Integer id) {
 		// TODO Auto-generated method stub
 		this.habitacionRepository.eliminar(id);
+	}
+
+	@Override
+	public Hotel buscarPClase(String clase) {
+		// TODO Auto-generated method stub
+		return this.habitacionRepository.seleccionarPClase(clase);
 	}
 
 }

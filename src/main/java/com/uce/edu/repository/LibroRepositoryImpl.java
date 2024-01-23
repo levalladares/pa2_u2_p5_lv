@@ -103,6 +103,8 @@ public class LibroRepositoryImpl implements ILibroRepository {
 		myQuery.setParameter("fecha", fechaPublicacion);
 		return myQuery.getResultList();
 	}
+	
+	
 
 	
 

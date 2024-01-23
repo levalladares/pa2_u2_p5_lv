@@ -20,4 +20,5 @@ public interface ILibroService {
 	public List<Libro> buscarPorFechaTyped (LocalDate fechaPublicacion);//SIN EL TYPED(nombre)
 	public Libro buscarPorTituloNamed(String titulo); //SIN EL NAMED
 	public List<Libro> buscarPorFechaNamed(LocalDate fechaPublicacion);  //SIN EL NAMED
+
 }
