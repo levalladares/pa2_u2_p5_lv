@@ -11,5 +11,7 @@ public interface IAutorRepository {
 	public void eliminar (Integer id);
 	
 	public Libro2 seleccionarPA(String nombre);
+	
+	public Autor seleccionarCriteriaAQ(String nombre, String nacionalidad);
 
 }

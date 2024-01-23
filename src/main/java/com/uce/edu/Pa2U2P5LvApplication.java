@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.uce.edu.repository.modelo.Alumno;
+import com.uce.edu.repository.modelo.Autor;
 import com.uce.edu.repository.modelo.Ciudadano;
 import com.uce.edu.repository.modelo.Empleado;
 import com.uce.edu.repository.modelo.Habitacion;
@@ -49,45 +50,28 @@ public class Pa2U2P5LvApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		//TYPED QUERY
+		//CRITERIA API QUERY
 		//1
-		Empleado e1 = this.ciudadanoService.buscarCPorCedula("12345");
-		System.out.println(e1);
+		System.out.println("1");
+		Alumno al = this.alumnoService.buuscarPorNombreCriteria("Luis");
+		System.out.println(al);
 		//2
-		Ciudadano c1 = this.ciudadanoService.buscarCiuPorCedula("12345");
-		System.out.println(c1);
+		System.out.println("2");
+		Autor au1 = this.autorService.buscarCriteriaAQ("Jose Rios", "ecuatoriano");
+		System.out.println(au1);
 		//3
-		Hotel h1 = this.habitacionService.buscarPClase("Presidencial");
-		System.out.println(h1);
+		System.out.println("3");
+		Empleado e1 = this.empleadoService.buscarPorSalarioCAQ(new BigDecimal(500));
+		System.out.println(e1);
 		//4
-		Libro2 l1 = this.autorService.seleccionarPA("Juan Montalvo2");
-		System.out.println(l1);
+		System.out.println("4");
+		Ciudadano c1 = this.ciudadanoService.buscarPorCriteriaAndOr("Luis", "Valladres", "17345");
+		System.out.println(c1);
 		//5
-		List<Libro> l2 = this.iLibroService.buscarPorFechaTyped(LocalDate.of(2024, 01, 07));
-		for (Libro l : l2) {
-			System.out.println(l);
-		}
-		
-		//NATIVE QUERY
-		//1
-		Ciudadano c2 = this.ciudadanoService.buscarPorCedulaCiud("12345");
+		System.out.println("5");
+		Ciudadano c2 =this.ciudadanoService.buscarPorApellidoCAQ("Zapata");
 		System.out.println(c2);
 		
-		//2
-		Hotel h2 = this.hotelService.buscarHotelPorDireccionNQ("Colon");
-		System.out.println(h2);
-		
-		//3
-		Empleado e2 = this.empleadoService.seleccionarPorSalario(new BigDecimal(500));
-		System.out.println(e2);
-		
-		//4
-		Habitacion ha1 = this.habitacionService.seleccionarPorNumero("01A");
-		System.out.println(ha1);
-		
-		//5
-		Alumno al = this.alumnoService.buscarPorNombre("Luis");
-		System.out.println(al);
 	}
 
 }

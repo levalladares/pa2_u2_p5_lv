@@ -44,4 +44,10 @@ public class AlumnoServiceImpl implements IAlumnoService {
 		return this.alumnoRepository.seleccionarPorNombre(nombre);
 	}
 
+	@Override
+	public Alumno buuscarPorNombreCriteria(String nombre) {
+		// TODO Auto-generated method stub
+		return this.alumnoRepository.seleccionarPorNombreCriteria(nombre);
+	}
+
 }

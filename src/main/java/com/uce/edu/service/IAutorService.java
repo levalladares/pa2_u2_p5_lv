@@ -16,5 +16,6 @@ public interface IAutorService {
 
 	public Libro2 seleccionarPA(String nombre);
 
+	public Autor buscarCriteriaAQ(String nombre, String nacionalidad);
 
 }

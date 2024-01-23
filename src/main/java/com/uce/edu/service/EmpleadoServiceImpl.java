@@ -44,4 +44,10 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 		return this.empleadoRepository.seleccionarPorSalario(salario);
 	}
 
+	@Override
+	public Empleado buscarPorSalarioCAQ(BigDecimal salario) {
+		// TODO Auto-generated method stub
+		return this.empleadoRepository.seleccionarPorSalarioCAQ(salario);
+	}
+
 }

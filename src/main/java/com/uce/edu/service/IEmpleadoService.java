@@ -13,4 +13,5 @@ public interface IEmpleadoService {
 	
 	
 	public Empleado seleccionarPorSalario(BigDecimal salario);
+	public Empleado buscarPorSalarioCAQ(BigDecimal salario);
 }

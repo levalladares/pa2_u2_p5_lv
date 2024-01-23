@@ -10,5 +10,7 @@ public interface IAlumnoRepository {
 	public void eliminar (Integer id);
 	
 	public Alumno seleccionarPorNombre(String nombre);
+	
+	public Alumno seleccionarPorNombreCriteria(String nombre);
 
 }

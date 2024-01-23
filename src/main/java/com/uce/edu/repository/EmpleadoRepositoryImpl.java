@@ -4,11 +4,17 @@ import java.math.BigDecimal;
 
 import org.springframework.stereotype.Repository;
 
+import com.uce.edu.repository.modelo.Autor;
 import com.uce.edu.repository.modelo.Empleado;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import jakarta.transaction.Transactional;
 
 @Transactional
@@ -49,6 +55,26 @@ public class EmpleadoRepositoryImpl implements IEmpleadoRepository{
 		Query myQuery = this.entityManager.createNativeQuery("SELECT * FROM empleado e WHERE e.empl_salario= :salario", Empleado.class);
 		myQuery.setParameter("salario", salario);
 		return (Empleado)myQuery.getSingleResult();
+	}
+
+	@Override
+	public Empleado seleccionarPorSalarioCAQ(BigDecimal salario) {
+		// TODO Auto-generated method stub
+		
+		CriteriaBuilder myCriteriaBuilder = this.entityManager.getCriteriaBuilder();
+		CriteriaQuery<Empleado> myCriteriaQuery = myCriteriaBuilder.createQuery(Empleado.class);
+		Root<Empleado> myFrom = myCriteriaQuery.from(Empleado.class);
+		Predicate condicionTotal = null;
+		Predicate condicionSalario = myCriteriaBuilder.greaterThan(myFrom.get("salario"),salario);
+		Predicate condicionSalario2 = myCriteriaBuilder.lessThan(myFrom.get("salario"),salario);
+		if(salario.equals(new BigDecimal(500))) {
+			condicionTotal = condicionSalario;
+		}else {
+			condicionTotal = condicionSalario2;
+		}
+		myCriteriaQuery.select(myFrom).where(condicionTotal);
+		TypedQuery<Empleado> myTypedQuery = this.entityManager.createQuery(myCriteriaQuery);
+		return myTypedQuery.getSingleResult();
 	}
 
 }

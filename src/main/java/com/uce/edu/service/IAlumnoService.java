@@ -10,5 +10,6 @@ public interface IAlumnoService {
 	public void eliminar (Integer id);
 
 	public Alumno buscarPorNombre(String nombre);
+	public Alumno buuscarPorNombreCriteria(String nombre);
 	
 }

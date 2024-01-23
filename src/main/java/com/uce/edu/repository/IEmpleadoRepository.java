@@ -12,5 +12,7 @@ public interface IEmpleadoRepository {
 	public void eliminar (Integer id);
 	
 	public Empleado seleccionarPorSalario(BigDecimal salario);
+	public Empleado seleccionarPorSalarioCAQ(BigDecimal salario);
+	
 
 }
