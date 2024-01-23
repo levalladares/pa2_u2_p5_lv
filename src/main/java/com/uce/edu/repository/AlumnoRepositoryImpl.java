@@ -6,6 +6,7 @@ import com.uce.edu.repository.modelo.Alumno;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
 
 @Repository
@@ -41,6 +42,14 @@ public class AlumnoRepositoryImpl implements IAlumnoRepository {
 		Alumno alu = this.seleccionar(id);
 		this.entityManager.remove(alu);
 
+	}
+
+	@Override
+	public Alumno seleccionarPorNombre(String nombre) {
+		// TODO Auto-generated method stub
+		Query myQuery = this.entityManager.createNativeQuery("SELECT * FROM alumno a WHERE a.alum_nombre = :nombre", Alumno.class);
+		myQuery.setParameter("nombre", nombre);
+		return (Alumno) myQuery.getSingleResult();
 	}
 
 }

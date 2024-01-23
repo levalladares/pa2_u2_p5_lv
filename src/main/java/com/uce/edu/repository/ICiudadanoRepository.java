@@ -28,4 +28,6 @@ public interface ICiudadanoRepository {
 
 	public Ciudadano seleccionarPorCriteriaAndOr(String nombre, String apellido, String cedula);
 	
+	
+	
 }

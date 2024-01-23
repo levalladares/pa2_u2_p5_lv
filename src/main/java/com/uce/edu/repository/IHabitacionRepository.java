@@ -12,5 +12,7 @@ public interface IHabitacionRepository {
 	
 	public Hotel seleccionarPClase(String clase);
 	
+	public Habitacion seleccionarPorNumero(String numero);
+	
 
 }

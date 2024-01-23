@@ -8,6 +8,7 @@ import com.uce.edu.repository.modelo.Libro2;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
@@ -47,9 +48,17 @@ public class HabitacionRepositoryImpl implements IHabitacionRepository {
 	@Override
 	public Hotel seleccionarPClase(String clase) {
 		// TODO Auto-generated method stub
-		TypedQuery<Hotel> myQuery = this.entityManager.createQuery("SELECT Hotel FROM Hotel h WHERE h.habitacion.clase = :clase", Hotel.class);
+		TypedQuery<Hotel> myQuery = this.entityManager.createQuery("SELECT h FROM Hotel h JOIN FETCH h.habitaciones hab WHERE hab.clase = :clase", Hotel.class);
 		myQuery.setParameter("clase", clase);
 		return myQuery.getSingleResult();
+	}
+
+	@Override
+	public Habitacion seleccionarPorNumero(String numero) {
+		// TODO Auto-generated method stub
+		Query myQuery = this.entityManager.createNativeQuery("SELECT * FROM habitacion h WHERE h.habi_numero = :numero", Habitacion.class);
+		myQuery.setParameter("numero", numero);
+		return (Habitacion) myQuery.getSingleResult();
 	}
 
 }

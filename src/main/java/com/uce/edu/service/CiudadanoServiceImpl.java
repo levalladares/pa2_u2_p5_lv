@@ -37,7 +37,7 @@ public class CiudadanoServiceImpl implements ICiudadanoService {
 	}
 
 	@Override
-	public Empleado seleccionarCPorCedula(String cedula) {
+	public Empleado buscarCPorCedula(String cedula) {
 		// TODO Auto-generated method stub
 		return this.ciudadanoRepository.seleccionarCPorCedula(cedula);
 	}
@@ -64,6 +64,12 @@ public class CiudadanoServiceImpl implements ICiudadanoService {
 	public Ciudadano buscarPorCriteriaAndOr(String nombre, String apellido, String cedula) {
 		// TODO Auto-generated method stub
 		return this.ciudadanoRepository.seleccionarPorCriteriaAndOr(nombre, apellido, cedula);
+	}
+
+	@Override
+	public Ciudadano buscarCiuPorCedula(String cedula) {
+		// TODO Auto-generated method stub
+		return this.ciudadanoRepository.seleccionarCiuPorCedula(cedula);
 	}
 
 }

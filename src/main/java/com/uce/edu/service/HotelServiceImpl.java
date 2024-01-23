@@ -31,5 +31,10 @@ public class HotelServiceImpl implements IHotelService {
 		// TODO Auto-generated method stub
 		return this.hotelRepository.seleccionar(id);
 	}
+	@Override
+	public Hotel buscarHotelPorDireccionNQ(String direccion) {
+		// TODO Auto-generated method stub
+		return this.hotelRepository.seleccionarHotelPorDireccionNQ(direccion);
+	}
 
 }

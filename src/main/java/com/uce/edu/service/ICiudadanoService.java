@@ -10,10 +10,11 @@ public interface ICiudadanoService {
 	public void actualizar(Ciudadano ciudadano);
 	public void eliminar(Integer id);
 	
+	public Ciudadano buscarCiuPorCedula(String cedula);
 	
 	public Ciudadano buscarPorCedulaCiud(String cedula);
 
-	public Empleado seleccionarCPorCedula(String cedula);
+	public Empleado buscarCPorCedula(String cedula);
 	
 	public Ciudadano buscarPorApellidoCAQ(String apellido);
 	

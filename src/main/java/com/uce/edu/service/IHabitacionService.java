@@ -10,5 +10,7 @@ public interface IHabitacionService {
 	public void actualizar(Habitacion habitacion);
 	public void eliminar(Integer id);
 	public Hotel buscarPClase(String clase);
+	
+	public Habitacion seleccionarPorNumero(String numero); 
 
 }

@@ -43,4 +43,10 @@ public class HabitacionServiceImpl implements IHabitacionService {
 		return this.habitacionRepository.seleccionarPClase(clase);
 	}
 
+	@Override
+	public Habitacion seleccionarPorNumero(String numero) {
+		// TODO Auto-generated method stub
+		return this.habitacionRepository.seleccionarPorNumero(numero);
+	}
+
 }

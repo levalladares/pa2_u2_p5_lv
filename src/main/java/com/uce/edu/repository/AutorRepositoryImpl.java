@@ -45,7 +45,7 @@ public class AutorRepositoryImpl implements IAutorRepository {
 	@Override
 	public Libro2 seleccionarPA(String nombre) {
 		// TODO Auto-generated method stub
-		TypedQuery<Libro2> myQuery = this.entityManager.createQuery("SELECT l FROM Libro2 l WHERE l.autor2.nombre = :nombre", Libro2.class);
+		TypedQuery<Libro2> myQuery = this.entityManager.createQuery("SELECT l FROM Libro2 l JOIN FETCH l.autoresLibros au WHERE au.autor2.nombre = :nombre", Libro2.class);
 		myQuery.setParameter("nombre", nombre);
 		return myQuery.getSingleResult();
 	}

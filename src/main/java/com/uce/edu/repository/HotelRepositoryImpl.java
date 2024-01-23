@@ -6,6 +6,7 @@ import com.uce.edu.repository.modelo.Hotel;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
 
 @Transactional
@@ -38,6 +39,17 @@ public class HotelRepositoryImpl implements IHotelRepository {
 		// TODO Auto-generated method stub
 		Hotel h = this.seleccionar(id);
 		this.entityManager.remove(h);
+	}
+
+	@Override
+	public Hotel seleccionarHotelPorDireccionNQ(String direccion) {
+		// TODO Auto-generated method stub
+		Query myQuery = this.entityManager.createNativeQuery("SELECT * FROM hotel h WHERE h.hote_direccion= :dato",
+				Hotel.class);
+		myQuery.setParameter("dato", direccion);
+		return (Hotel) myQuery.getSingleResult();
+		
+		
 	}
 
 }

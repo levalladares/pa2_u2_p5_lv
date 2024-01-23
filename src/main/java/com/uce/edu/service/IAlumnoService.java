@@ -9,4 +9,6 @@ public interface IAlumnoService {
 	public void actualizar(Alumno alumno);
 	public void eliminar (Integer id);
 
+	public Alumno buscarPorNombre(String nombre);
+	
 }
